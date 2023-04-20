@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "auto_gpt_plugin_template"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
-  { name="Bill Schumacher", email="34168009+BillSchumacher@users.noreply.github.com" },
+  { name="Torantulino", email="34168009+BillSchumacher@users.noreply.github.com" },
 ]
 description = "The template plugin for Auto-GPT."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -19,12 +19,12 @@ classifiers = [
 dependencies = ["abstract-singleton"]
 
 [project.urls]
-"Homepage" = "https://github.com/Torantulino/Auto-GPT-Plugin-Template"
-"Bug Tracker" = "https://github.com/Torantulino/Auto-GPT-Plugin-Template/issues"
+"Homepage" = "https://github.com/Torantulino/Auto-GPT"
+"Bug Tracker" = "https://github.com/Torantulino/Auto-GPT"
 
 [tool.black]
 line-length = 88
-target-version = ['py310']
+target-version = ['py38']
 include = '\.pyi?$'
 extend-exclude = ""
 
