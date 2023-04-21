@@ -4,7 +4,7 @@ set -euo pipefail
 
 clean() {
   # Remove build artifacts and temporary files
-  rm -rf build dist __pycache__ *.egg-info **/*.egg-info *.pyc **/*.pyc reports 2>/dev/null || true
+  rm -rf {build,dist,__pycache__,*.egg-info,**/*.egg-info,*.pyc,**/*.pyc,reports} 2>/dev/null || true
 }
 
 qa() {
@@ -12,6 +12,7 @@ qa() {
   if command -v flake8 >/dev/null 2>&1; then
     flake8 .
   fi
+
   python run_pylint.py
 }
 
@@ -21,19 +22,24 @@ style() {
   black --exclude=".*/*(dist|venv|.venv|test-results)/*.*" .
 }
 
-if [[ "$@" == *"clean"* ]]; then
-  printf 'Removing build artifacts and temporary files...\n'
-  clean
-elif [[ "$@" == *"qa"* ]]; then
-  printf 'Running static analysis tools...\n'
-  qa
-elif [[ "$@" == *"style"* ]]; then
-  printf 'Running code formatters...\n'
-  style
-else
-  printf 'Usage: %s [clean|qa|style]\n' "$0"
-  exit 1
-fi
+case "$1" in
+  clean)
+    echo Removing build artifacts and temporary files...
+    clean
+    ;;
+  qa)
+    echo Running static analysis tools...
+    qa
+    ;;
+  style)
+    echo Running code formatters...
+    style
+    ;;
+  *)
+    echo "Usage: $0 [clean|qa|style]"
+    exit 1
+    ;;
+esac
 
 printf 'Done!\n\n'
 exit 0
