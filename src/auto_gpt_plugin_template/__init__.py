@@ -276,7 +276,7 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
 
         Returns:
             bool: True if the plugin can handle the report method."""
-        return True
+        return False
 
     @abc.abstractmethod
     def report(self, message: str) -> None:
