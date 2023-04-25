@@ -243,7 +243,7 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
             str: The resulting response.
         """
         pass
-    
+
     @abc.abstractmethod
     def can_handle_text_embedding(
         self, text: str
@@ -265,5 +265,48 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
             text (str): The text to be convert to embedding.
         Returns:
             list: The text embedding.
+        """
+        pass
+
+    @abc.abstractmethod
+    def can_handle_user_input(self, user_input: str) -> bool:
+        """This method is called to check that the plugin can
+        handle the user_input method.
+
+        Args:
+            user_input (str): The user input.
+
+        Returns:
+            bool: True if the plugin can handle the user_input method."""
+        return False
+
+    @abc.abstractmethod
+    def user_input(self, user_input: str) -> str:
+        """This method is called to request user input to the user.
+
+        Args:
+            user_input (str): The question or prompt to ask the user.
+
+        Returns:
+            str: The user input.
+        """
+
+        pass
+
+    @abc.abstractmethod
+    def can_handle_report(self) -> bool:
+        """This method is called to check that the plugin can
+        handle the report method.
+
+        Returns:
+            bool: True if the plugin can handle the report method."""
+        return False
+
+    @abc.abstractmethod
+    def report(self, message: str) -> None:
+        """This method is called to report a message to the user.
+
+        Args:
+            message (str): The message to report.
         """
         pass

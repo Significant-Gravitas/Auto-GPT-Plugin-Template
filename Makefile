@@ -10,13 +10,15 @@ endif
 
 helpers = @$(SHELL_CMD) helpers$(SCRIPT_EXT) $1
 
-clean: helpers$(SCRIPT_EXT)
+clean qa style: helpers$(SCRIPT_EXT)
+
+clean:
 	$(call helpers,clean)
 
-qa: helpers$(SCRIPT_EXT)
+qa:
 	$(call helpers,qa)
 
-style: helpers$(SCRIPT_EXT)
+style:
 	$(call helpers,style)
 
 .PHONY: clean qa style
