@@ -1,7 +1,7 @@
 # Auto-GPT-Plugin-Template
 A starting point for developing your own external plug-in for Auto-GPT
 
-### Notes to plugin developers
+### Notes for plugin developers
 
 - If you want your plugin to live within the codebase, fork the [plugins repo](https://github.com/Significant-Gravitas/Auto-GPT-Plugins) instead. Read the notes there
 - For a more thorough and current guide, please refer to the [plugins repository](https://github.com/Significant-Gravitas/Auto-GPT-Plugins).
