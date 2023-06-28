@@ -16,7 +16,6 @@ A starting point for developing your own external plug-in for Auto-GPT
    ``` shell
       pip install -r requirements.txt
    ```
-3. Use it as a starting point
 4. Update your plugins_config.yaml file to enable the plugin. If you skip this step the plugin won't be loaded
 
    ```shell
