@@ -90,14 +90,14 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
         return False
 
     @abc.abstractmethod
-    def post_planning(self, response: str) -> str:
+    def post_planning(self, response: Dict[Any, Any]) -> Dict[Any, Any]:
         """This method is called after the planning chat completion is done.
 
         Args:
-            response (str): The response.
+            response (Dict[Any, Any]): The response.
 
         Returns:
-            str: The resulting response.
+            Dict[Any, Any]: The resulting response.
         """
         pass
 
