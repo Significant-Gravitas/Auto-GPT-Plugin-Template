@@ -53,13 +53,7 @@ class AutoGPT_CT(AutoGPTPluginTemplate):
             PromptGenerator: The prompt generator.
         """
 
-        from .commercetools import ct_get_products_info, ct_get_all_orders, ct_execute_graph_ql, ct_get_graph_ql_schema
-        prompt.add_command(
-            "ct_get_graph_ql_schema",
-            "Get Commercetools GraphQL schema",
-            {},
-            ct_get_graph_ql_schema,
-        )
+        from .commercetools import ct_get_products_info, ct_get_all_orders, ct_execute_graph_ql
         prompt.add_command(
             "ct_execute_graph_ql",
             "Execute any graphQL query againt Commercetools",
