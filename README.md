@@ -1,25 +1,34 @@
-# Auto-GPT-Plugin-Template
-A starting point for developing your own external plug-in for Auto-GPT
-
-### Notes for plugin developers
-
-- If you want your plugin to live within the codebase, fork the [plugins repo](https://github.com/Significant-Gravitas/Auto-GPT-Plugins) instead. Read the notes there
-- For a more thorough and current guide, please refer to the [plugins repository](https://github.com/Significant-Gravitas/Auto-GPT-Plugins).
-- If you use this repo for your own plugin, **EDIT This README**
+# Auto-GPT-Commercetools-Plugin
+A plugin that adds Commercetools API integration into Auto GPT
 
 ### How to use a plugin
 
-1. **Clone the plugin repo** into the Auto-GPT's plugins folder
-2. **Install the plugin's dependencies (if any):**
-   Navigate to the plugin's folder in your terminal, and run the following command to install any required dependencies:
+1. **Clone the plugin repo** 
+1. **Install the plugin's dependencies (if any):**
+   Navigate to the cloned directory in your terminal, and run the following command to install any required dependencies:
 
    ``` shell
       pip install -r requirements.txt
    ```
-4. Update your plugins_config.yaml file to enable the plugin. If you skip this step the plugin won't be loaded
+1. Package the plugin as a Zip file: If you cloned the repository, compress the plugin `src/auto_gpt_commercetools_plugin` folder as a Zip file.
+1. Copy the plugin's Zip file: Place the plugin's Zip file in the plugins folder of the Auto-GPT repository.
+1. Update your plugins_config.yaml file to enable the plugin. If you skip this step the plugin won't be loaded
 
    ```shell
-   plugin_folder:
+   AutoGPT_CT:
       - config: {} # Configs from the plugin README and installation instructions.
       - enabled: true
    ```
+1. Add API client to the .env file
+```
+################################################################################
+### Commercetools API
+################################################################################
+
+CTP_PROJECT_KEY=<project-key>
+CTP_CLIENT_SECRET=<secret>
+CTP_CLIENT_ID=<id>
+CTP_AUTH_URL=https://auth.<region>.<provider>.commercetools.com
+CTP_API_URL=https://api.<region>.<provider>.commercetools.com
+CTP_SCOPES=manage_project:<project-key>
+```

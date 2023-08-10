@@ -7,3 +7,5 @@ wheel
 setuptools
 build
 twine
+typing
+commercetools
