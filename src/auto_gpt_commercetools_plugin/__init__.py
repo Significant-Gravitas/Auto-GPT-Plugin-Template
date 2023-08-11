@@ -53,7 +53,7 @@ class AutoGPT_CT(AutoGPTPluginTemplate):
             PromptGenerator: The prompt generator.
         """
 
-        from .commercetools import ct_get_products_info, ct_get_all_orders, ct_execute_graph_ql
+        from .commercetools import ct_get_products_info, ct_get_all_orders, ct_execute_graph_ql, ct_create_product_discount
         prompt.add_command(
             "ct_execute_graph_ql",
             "Execute any graphQL query againt Commercetools",
@@ -72,7 +72,16 @@ class AutoGPT_CT(AutoGPTPluginTemplate):
             {},
             ct_get_all_orders,
         )
-
+        prompt.add_command(
+            "ct_create_product_discount",
+            "Create a product discount",
+            {
+                "name": "Name of the new discount rule",
+                "percentValue": "Int value of discount range between 0 and 100",
+                "skus": "List of skus to apply discount"
+            },
+            ct_create_product_discount,
+        )
         return prompt
 
     def can_handle_on_planning(self) -> bool:

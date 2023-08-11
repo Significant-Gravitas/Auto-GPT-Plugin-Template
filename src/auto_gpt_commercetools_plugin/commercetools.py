@@ -1,7 +1,7 @@
 import commercetools
 from commercetools.platform.client import Client
 from commercetools.platform.models.graph_ql import GraphQLRequest
-
+import random
 import os
 
 # Authorization credentials
@@ -71,6 +71,23 @@ def ct_get_all_orders():
                 }
             }
         }
+        """
+    body = GraphQLRequest(query=query)
+
+    result = client.with_project_key(project_key=project_key).graphql().post(body=body)
+    return result
+
+def ct_create_product_discount(name, percentValue, skus):
+    sku_str = ','.join(f'"{sku}"' for sku in skus)
+    r = random.random()
+
+    query = f"""
+        mutation {{
+            createProductDiscount(draft: {{name: {{locale: "en-US", value: "{name}"}}, value: {{relative: {{permyriad: {percentValue}}}}}, predicate: "sku in ({sku_str})", sortOrder: "{r}"}}) {{
+                predicate
+                name(locale: "en-US")
+            }}
+        }}
         """
     body = GraphQLRequest(query=query)
 
