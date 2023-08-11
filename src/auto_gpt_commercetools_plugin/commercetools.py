@@ -31,18 +31,17 @@ def ct_execute_graph_ql(query):
     return result
 
 def ct_get_products_info(skus, currency):
+    sku_array = str(skus).replace("'", '"')
+
     query = f"""
         query {{
-            products(skus: {skus}) {{
+            products(skus: {sku_array}) {{
                 results {{
                     masterData {{
                         current {{
-                            allVariants {{
-                                price(currency:"{currency}") {{
-                                    value {{
-                                        centAmount
-                                    }}
-                                }}
+                            name(locale: "en-US")
+                            masterVariant {{
+                              sku
                             }}
                         }}
                     }}
@@ -77,4 +76,3 @@ def ct_get_all_orders():
 
     result = client.with_project_key(project_key=project_key).graphql().post(body=body)
     return result
-
